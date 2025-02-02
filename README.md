@@ -5,13 +5,13 @@ Groupe: ER ROUASSE Ayoub, KONE Shyli, MOREL Robin et THIAW Alioune
 
 ## Sommaire
 
-Introduction
+1. Introduction
 
 1. 1. Historique du Machine Learning
 
 1. 2. Définition et enjeux
 
-Apprentissage supervisé
+2. Apprentissage supervisé
 
 2.1 Kppv (k plus proches voisins)
 
@@ -21,9 +21,9 @@ Apprentissage supervisé
 
 2.4 SVM (Machines à vecteurs de support)
 
-Apprentissage non supervisé
+3. Apprentissage non supervisé
 
-3.1 Kmeans
+3. 1. Kmeans
 
 3.2 DBScan
 
