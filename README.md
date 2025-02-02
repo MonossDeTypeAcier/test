@@ -36,6 +36,8 @@ Le Machine Learning (ML) s'est développé à partir des avancées en intelligen
 
 Le Machine Learning est une sous-discipline de l'intelligence artificielle visant à développer des modèles capables de généraliser des structures sous-jacentes dans les données, sans instructions explicites. Les défis actuels incluent la complexité algorithmique, la généralisation sur des données hors distribution et la robustesse face aux perturbations adversariales.
 
+--- 
+
 # 2. Apprentissage supervisé
 
 L’apprentissage supervisé repose sur l'utilisation d’un ensemble de données étiquetées pour entraîner un modèle, en minimisant une fonction de coût via des méthodes d'optimisation comme la descente de gradient.
@@ -56,6 +58,8 @@ La discrimination fonctionnelle repose sur l’optimisation d’une fonction de 
 
 Les SVM optimisent une frontière de décision en maximisant la marge entre les classes, en utilisant des noyaux (linéaires, RBF, polynomiaux) pour projeter les données dans des espaces de dimension supérieure. La résolution repose sur des méthodes d'optimisation convexe comme les multiplicateurs de Lagrange et la programmation quadratique.
 
+--- 
+
 # 3. Apprentissage non supervisé
 
 L’apprentissage non supervisé repose sur l’analyse exploratoire des structures sous-jacentes dans des données non étiquetées.
@@ -71,6 +75,8 @@ DBScan segmente les données en fonction de leur densité locale, permettant la 
 ## 3.3 Carte de Kohonen
 
 Les cartes de Kohonen sont des réseaux de neurones non supervisés appliqués à la réduction dimensionnelle et au clustering. L’auto-organisation repose sur une mise à jour compétitive des poids des neurones à travers une fonction de voisinage gaussienne qui décroît au fil des itérations.
+
+---
 
 # 4. Conclusion
 
