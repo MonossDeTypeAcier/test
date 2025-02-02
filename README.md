@@ -5,31 +5,25 @@ Groupe: ER ROUASSE Ayoub, KONE Shyli, MOREL Robin et THIAW Alioune
 
 ## Sommaire
 
-1. Introduction
+# Sommaire
 
-  1. Historique du Machine Learning
+1. Introduction  
+   1.1 Historique du Machine Learning  
+   1.2 Définition et enjeux  
 
-1. 2. Définition et enjeux
+2. Apprentissage supervisé  
+   2.1 Kppv (k plus proches voisins)  
+   2.2 MLP (Perceptron multicouche)  
+   2.3 Discrimination fonctionnelle  
+   2.4 SVM (Machines à vecteurs de support)  
 
-2. Apprentissage supervisé
+3. Apprentissage non supervisé  
+   3.1 Kmeans  
+   3.2 DBScan  
+   3.3 Carte de Kohonen  
 
-2.1 Kppv (k plus proches voisins)
+4. Conclusion  
 
-2.2 MLP (Perceptron multicouche)
-
-2.3 Discrimination fonctionnelle
-
-2.4 SVM (Machines à vecteurs de support)
-
-3. Apprentissage non supervisé
-
-3. 1. Kmeans
-
-3.2 DBScan
-
-3.3 Carte de Kohonen
-
-Conclusion
 
 1. Introduction
 
