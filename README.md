@@ -7,7 +7,7 @@ Groupe: ER ROUASSE Ayoub, KONE Shyli, MOREL Robin et THIAW Alioune
 
 1. Introduction
 
-  a. Historique du Machine Learning
+  1. Historique du Machine Learning
 
 1. 2. Définition et enjeux
 
