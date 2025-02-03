@@ -64,7 +64,7 @@ L’apprentissage non supervisé repose sur l’analyse exploratoire des structu
 
 ## 3.1 Kmeans
 
-L’algorithme Kmeans partitionne les données en k clusters en minimisant la variance intra-cluster par rapport aux centroïdes. Il est sensible aux conditions initiales, nécessitant des stratégies comme Kmeans++ pour une meilleure initialisation.
+L’algorithme Kmeans partitionne les données en k clusters en minimisant la variance intra-cluster par rapport aux centroïdes. Il est sensible aux conditions initiales.
 
 ## 3.2 DBScan
 
