@@ -146,8 +146,37 @@ L’apprentissage non supervisé repose sur l’analyse exploratoire des structu
 L’algorithme Kmeans partitionne les données en k clusters en minimisant la variance intra-cluster par rapport aux centroïdes. Il est sensible aux conditions initiales.
 
 Test:
+Pour K-means, nous avons deux exemples : l’un avec des points répartis en deux groupes, et l’autre avec deux demi-lunes. Dans ce rapport, nous ne présenterons que le second cas, tandis que le résultat du premier est disponible dans l'archive.
 
+Importations des bibliothèques:
+```
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.datasets import make_moons
+from sklearn.cluster import KMeans
 
+```
+On génère des 200 points sous formes de lunes avec un léger bruit:
+```
+X, y = make_moons(200, noise=.05, random_state=0)
+```
+On y ajoute k-means avec 2 clusters, on entraine le modèle sur les données x et on attribue les points pour chaques clusters trouvé par l'algorithme:
+```
+kmeans = KMeans(n_clusters=2)
+kmeans.fit(X)
+y_kmeans = kmeans.predict(X)
+
+```
+On affiche les résultats avec l'affichage du centre pour mettre en avant le défaut de k-means sur ce type de données:
+
+```
+plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, s=50, cmap='viridis')
+centers = kmeans.cluster_centers_
+plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200);
+
+```
+On affiche avec plt.show ce qui nous donne le résultat suivant:
+![k-means](bluvsred_k-means.png)
 
 ## 3.2 DBScan
 
