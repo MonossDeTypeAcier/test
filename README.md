@@ -52,9 +52,13 @@ Le k-NN est une méthode d’apprentissage non paramétrique basée sur une fonc
 
 Test: 
 
-Pour commencer, nous avons généré deux types de points (bleus et rouges), chacun étant étiqueté en fonction de sa couleur (1 pour rouge et 0 pour bleu).
+Pour commencer, nous avons importé les bibliothèques et généré deux types de points (bleus et rouges), chacun étant étiqueté en fonction de sa couleur (1 pour rouge et 0 pour bleu).
 
 ```
+import matplotlib.pyplot as plt
+import numpy as np
+import random
+
 nb_point = 30
 tab_points = []
 
@@ -177,10 +181,132 @@ plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200);
 ```
 On affiche avec plt.show ce qui nous donne le résultat suivant:
 ![k-means](bluvsred_kmeans.png)
+Comme on peut le voir les données ne sont pas séparées selon leurs appartenance à une lune mais par le centre calculé par K-means, pour avoir le résultat voulu, il faudrait un autre algorithme tel que DBScan.
 
 ## 3.2 DBScan
 
 DBScan segmente les données en fonction de leur densité locale, permettant la détection de clusters de formes arbitraires et l’identification de points aberrants. Il repose sur la définition d’un rayon de voisinage (ε) et d’un seuil minimal de points requis pour former un cluster.
+
+Test:
+
+Déclaration des bibliothèques:
+```
+import matplotlib.pyplot as plt
+import numpy as np
+import random
+from sklearn.cluster import DBSCAN
+
+```
+On génère les points :
+```
+nb_point = 30
+tab_points = []
+for i in range(nb_point):
+    x_red = np.random.uniform(3.0, 7.0)
+    y_red = np.random.uniform(3.0, 7.0)
+    tab_points.append((x_red, y_red, 1))  # 1 for red
+
+    x_blu = np.random.uniform(13.0, 17.0)
+    y_blu = np.random.uniform(3.0, 7.0)
+    tab_points.append((x_blu, y_blu, 0))  # 0 for blue
+
+```
+On mélange les points et on sépare les coordonnées des étiquettes:
+```
+random.shuffle(tab_points)
+coordinates = np.array([(x, y) for x, y, label in tab_points])
+labels = np.array([label for x, y, label in tab_points])
+
+```
+On affiche les points:
+```
+plt.figure(figsize=(8, 8))
+
+# Plot the red points
+plt.scatter(red_x, red_y, color='red', label='Red Points', s=100)
+
+# Plot the blue points
+plt.scatter(blu_x, blu_y, color='blue', label='Blue Points', s=100)
+
+# Set fixed axis limits
+plt.xlim(0, 20)
+plt.ylim(0, 10)
+plt.gca().set_aspect('equal', adjustable='box')
+
+# Add labels and title
+plt.title("Red and Blue Points")
+plt.xlabel("X-axis")
+plt.ylabel("Y-axis")
+
+# Display the grid
+plt.grid(True, linestyle='--', alpha=0.6)
+
+# Show the plot
+plt.show()
+
+```
+Ce qui nous donne le résultat suivant avant application de DBScan:
+![DBScan1](DBScan1.png)
+
+On applique donc l'algorithme DBScan avec epsilon =2 :
+```
+debscan = DBSCAN(eps=2, min_samples=2).fit(coordinates)
+labels_pred = debscan.labels_
+n_clusters_ = len(set(labels_pred)) - (1 if -1 in labels_pred else 0)
+
+```
+Affichage du résultat de DBScan:
+```
+unique_labels = set(labels_pred)
+core_samples_mask = np.zeros_like(labels_pred, dtype=bool)
+core_samples_mask[debscan.core_sample_indices_] = True
+
+colors = [plt.cm.Spectral(each) for each in np.linspace(0, 1, len(unique_labels))]
+for k, col in zip(unique_labels, colors):
+    if k == -1:
+        # Black used for noise.
+        col = [0, 0, 0, 1]
+
+    class_member_mask = labels_pred == k
+
+    xy = coordinates[class_member_mask & core_samples_mask]
+    plt.plot(
+        xy[:, 0],
+        xy[:, 1],
+        "o",
+        markerfacecolor=tuple(col),
+        markeredgecolor="k",
+        markersize=14,
+    )
+
+    xy = coordinates[class_member_mask & ~core_samples_mask]
+    plt.plot(
+        xy[:, 0],
+        xy[:, 1],
+        "o",
+        markerfacecolor=tuple(col),
+        markeredgecolor="k",
+        markersize=6,
+    )
+plt.title(f"Estimated number of clusters: {n_clusters_}")
+# Set fixed axis limits
+plt.xlim(0, 20)
+plt.ylim(0, 10)
+plt.gca().set_aspect('equal', adjustable='box')
+
+# Add labels
+plt.xlabel("X-axis")
+plt.ylabel("Y-axis")
+
+# Display the grid
+plt.grid(True, linestyle='--', alpha=0.6)
+
+# Show the plot
+plt.show()
+
+```
+Ce qui nous donne le résultat suivant:
+![DBScan1](DBScan2.png)
 
 ## 3.3 Carte de Kohonen
 
