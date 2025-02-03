@@ -7,20 +7,21 @@ Groupe: ER ROUASSE Ayoub, KONE Shyli, MOREL Robin et THIAW Alioune
 
  1. Introduction  
    1.1 Historique du Machine Learning  
-   1.2 Définition et enjeux  
+   1.2 Définition et enjeux
+   1.3 Présentation du projet  
 
-2. Apprentissage supervisé  
+3. Apprentissage supervisé  
    2.1 Kppv (k plus proches voisins)  
    2.2 MLP (Perceptron multicouche)  
    2.3 Discrimination fonctionnelle  
    2.4 SVM (Machines à vecteurs de support)  
 
-3. Apprentissage non supervisé  
+4. Apprentissage non supervisé  
    3.1 Kmeans  
    3.2 DBScan  
    3.3 Carte de Kohonen  
 
-4. Conclusion  
+5. Conclusion  
 
 --- 
 
@@ -37,6 +38,7 @@ Le Machine Learning est une sous-discipline de l'intelligence artificielle visan
 ## 1.3 Travail demandé
 
 Dans le cadre de ce projet, nous avons developpé plusieurs algorithmes de machine learning, tels que KPPV (KNN), K-means et DBScan. L'ensemble des codes est disponible dans l'archive du projet et sera présenté dans les chapitres correspondants.
+Pour chacuns des algorithmes, nous avons utilisé les bibliothèques sklearn et différentes bibliothèques mathématiques telles que numpy et maplotlib.
 
 --- 
 
@@ -48,6 +50,34 @@ L’apprentissage supervisé repose sur l'utilisation d’un ensemble de donnée
 
 Le k-NN est une méthode d’apprentissage non paramétrique basée sur une fonction de similarité, généralement une distance métrique (euclidienne, Manhattan, Minkowski). La classification repose sur le vote majoritaire parmi les k voisins les plus proches, nécessitant une recherche efficace comme les KD-trees ou les ball trees pour améliorer la complexité computationnelle.
 
+Test: 
+
+Pour commencer, nous avons généré deux types de points (bleus et rouges), chacun étant étiqueté en fonction de sa couleur (1 pour rouge et 0 pour bleu).
+
+```
+nb_point = 30
+tab_points = []
+
+for i in range(nb_point):
+    x_red = np.random.uniform(3.0, 7.0)
+    y_red = np.random.uniform(3.0, 7.0)
+    tab_points.append((x_red, y_red, 1))  # 1 pour les points rouges
+
+    x_blu = np.random.uniform(13.0, 17.0)
+    y_blu = np.random.uniform(3.0, 7.0)
+    tab_points.append((x_blu, y_blu, 0))  # 0 pour les points bleus
+
+```
+On les mélange pour casser l'ordre de génération et on récupère leurs coordonnées:
+
+```
+random.shuffle(tab_points)
+coordinates = np.array([(x, y) for x, y, label in tab_points])
+labels = np.array([label for x, y, label in tab_points])
+
+```
+coordinates → Contient uniquement les coordonnées (x, y) des points.
+labels → Contient les étiquettes (1 pour rouge, 0 pour bleu).
 
 ## 2.2 MLP (Perceptron multicouche)
 
