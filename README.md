@@ -176,7 +176,7 @@ plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200);
 
 ```
 On affiche avec plt.show ce qui nous donne le résultat suivant:
-![k-means](bluvsred_k-means.png)
+![k-means](bluvsred_kmeans.png)
 
 ## 3.2 DBScan
 
