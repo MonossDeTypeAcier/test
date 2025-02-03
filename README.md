@@ -77,7 +77,51 @@ labels = np.array([label for x, y, label in tab_points])
 
 ```
 coordinates → Contient uniquement les coordonnées (x, y) des points.
+
 labels → Contient les étiquettes (1 pour rouge, 0 pour bleu).
+
+On les sépare pour les afficher de la bonne couleurs:
+
+```
+red_x, red_y = coordinates[labels == 1].T
+blu_x, blu_y = coordinates[labels == 0].T
+
+```
+
+Création du premier graphique qui affiche seulement les points:
+```
+ax[0].scatter(red_x, red_y, color='red', label='Red Points', s=100)
+ax[0].scatter(blu_x, blu_y, color='blue', label='Blue Points', s=100)
+ax[0].set_xlim(0, 20)
+ax[0].set_ylim(0, 10)
+ax[0].set_aspect('equal', adjustable='box')
+ax[0].set_title("Red and Blue Points")
+ax[0].set_xlabel("X-axis")
+ax[0].set_ylabel("Y-axis")
+ax[0].grid(True, linestyle='--', alpha=0.6)
+
+```
+Création du deuxième graphique reliant les voisins les plus proche avec k =2:
+```
+nbrs = NearestNeighbors(n_neighbors=2).fit(coordinates)
+distances, indices = nbrs.kneighbors(coordinates)
+
+ax[1].scatter([x[0] for x in coordinates], [x[1] for x in coordinates], color='green', s=100)
+for i, (point, neighbors) in enumerate(zip(coordinates, indices)):
+    for neighbor in neighbors:
+        ax[1].plot([point[0], coordinates[neighbor][0]], [point[1], coordinates[neighbor][1]], 'k--')
+ax[1].set_title("Nearest Neighbors")
+ax[1].set_xlabel("X-axis")
+ax[1].set_ylabel("Y-axis")
+ax[1].grid(True, linestyle='--', alpha=0.6)
+ax[1].set_xlim(0, 20)
+ax[1].set_ylim(0, 10)
+ax[1].set_aspect('equal', adjustable='box')
+
+```
+Et on affiche tout avec un plt.show, ce qui nous donne les deux graphiques suivants :
+![KNN](Kppv.png)
+
 
 ## 2.2 MLP (Perceptron multicouche)
 
