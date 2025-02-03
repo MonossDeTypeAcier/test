@@ -34,6 +34,10 @@ Le Machine Learning (ML) s'est développé à partir des avancées en intelligen
 
 Le Machine Learning est une sous-discipline de l'intelligence artificielle visant à développer des modèles capables de généraliser des structures sous-jacentes dans les données, sans instructions explicites. Les défis actuels incluent la complexité algorithmique, la généralisation sur des données hors distribution et la robustesse face aux perturbations adversariales.
 
+## 1.3 Travail demandé
+
+Dans le cadre de ce projet, nous avons developpé plusieurs algorithmes de machine learning, tels que KPPV (KNN), K-means et DBScan. L'ensemble des codes est disponible dans l'archive du projet et sera présenté dans les chapitres correspondants.
+
 --- 
 
 # 2. Apprentissage supervisé
@@ -43,6 +47,7 @@ L’apprentissage supervisé repose sur l'utilisation d’un ensemble de donnée
 ## 2.1 Kppv (k plus proches voisins)
 
 Le k-NN est une méthode d’apprentissage non paramétrique basée sur une fonction de similarité, généralement une distance métrique (euclidienne, Manhattan, Minkowski). La classification repose sur le vote majoritaire parmi les k voisins les plus proches, nécessitant une recherche efficace comme les KD-trees ou les ball trees pour améliorer la complexité computationnelle.
+
 
 ## 2.2 MLP (Perceptron multicouche)
 
@@ -65,6 +70,10 @@ L’apprentissage non supervisé repose sur l’analyse exploratoire des structu
 ## 3.1 Kmeans
 
 L’algorithme Kmeans partitionne les données en k clusters en minimisant la variance intra-cluster par rapport aux centroïdes. Il est sensible aux conditions initiales.
+
+Test:
+
+
 
 ## 3.2 DBScan
 
